@@ -3,7 +3,6 @@ package com;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.junit.Test;
-import org.testng.annotations.Test;
 
 import com.example.HelloServlet;
 
@@ -13,7 +12,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
 
 public class HelloServletTest {
 
