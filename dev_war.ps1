@@ -1,7 +1,7 @@
 
 
 # Cấu hình
-$repoOwner = "PhamMinhDan"
+$repoOwner = "DangTrongLuong"
 $repoName = "java-servlet-web"
 $artifactName = "servlet-war"
 $tomcatWebapps = "E:\DevOps\Apache_Tomcat\webapps"
