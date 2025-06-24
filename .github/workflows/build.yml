@@ -4,7 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - "src/main/java/com/example/HelloServlet.java"
+      - "src/main/**"
+      - "src/test/**"
 
 jobs:
   build:
@@ -54,5 +55,5 @@ jobs:
 
       - name: Verify Deployment
         run: |
-          PowerShell -ExecutionPolicy Bypass -Command "Start-Sleep -Seconds 10; $res = Invoke-WebRequest -Uri 'http://localhost:8082/java-servlet-web-1.0-SNAPSHOT/hello' -UseBasicParsing -ErrorAction SilentlyContinue; if ($res.StatusCode -eq 200) { Write-Host 'Deployment successful!' } else { Write-Error ' Deployment failed or invalid response.'; exit 1 }"
+          PowerShell -ExecutionPolicy Bypass -Command "Start-Sleep -Seconds 10; $res = Invoke-WebRequest -Uri 'http://localhost:8082/java-servlet-web-1.0-SNAPSHOT/' -UseBasicParsing -ErrorAction SilentlyContinue; if ($res.StatusCode -eq 200) { Write-Host 'Deployment successful!' } else { Write-Error ' Deployment failed or invalid response.'; exit 1 }"
         shell: cmd
