@@ -13,6 +13,8 @@ jobs:
         with:
           java-version: "21"
           distribution: "temurin"
+      - name: Run Unit Tests with Maven
+        run: mvn clean test
       - name: Verify with Maven
         run: mvn clean verify # Kiểm tra mã
       - name: Build with Maven
