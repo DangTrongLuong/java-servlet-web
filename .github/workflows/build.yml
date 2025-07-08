@@ -2,7 +2,7 @@ name: Java CI/CD with Maven - Build and Deploy WAR Tom cat
 
 on:
   push:
-    branches-ignore: [main]
+    branches-ignore: [main, feature-dan]
     paths:
       - "src/main/**"
       - "src/test/**"
@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up JDK 21
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: "21"
+          java-version: "17"
           distribution: "temurin"
       - name: Run Unit Tests with Maven
         run: mvn clean test
