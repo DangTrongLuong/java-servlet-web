@@ -27,33 +27,3 @@ jobs:
           name: servlet-war
           path: target/*.war
           if-no-files-found: error
-
-  deploy:
-    runs-on: [self-hosted, windows]
-    needs: build
-    steps:
-      - name: Download WAR artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: servlet-war
-          path: ./artifacts
-
-      - name: Stop Tomcat
-        run: |
-          PowerShell -ExecutionPolicy Bypass -Command "try { $tcpClient = New-Object System.Net.Sockets.TcpClient; $tcpClient.Connect('localhost', 8005); if ($tcpClient.Connected) { if (Test-Path 'E:\DevOps\Apache_Tomcat\bin\shutdown.bat') { & 'E:\DevOps\Apache_Tomcat\bin\shutdown.bat' } } $tcpClient.Close() } catch { Write-Host 'Tomcat not running on port 8005, skipping shutdown.bat' }; Start-Sleep -Seconds 60; $processes = Get-Process -Name 'java' -ErrorAction SilentlyContinue | Where-Object { $_.Path -like '*E:\DevOps\Apache_Tomcat*' }; if ($processes) { $processes | Stop-Process -Force -ErrorAction SilentlyContinue; Write-Host 'Stopped ' + $processes.Count + ' Tomcat Java processes' } else { Write-Host 'No Tomcat Java processes found' }"
-        shell: cmd
-
-      - name: Deploy WAR to Tomcat
-        run: |
-          PowerShell -ExecutionPolicy Bypass -Command "Remove-Item -Path 'E:\DevOps\Apache_Tomcat\webapps\java-servlet-web-1.0-SNAPSHOT.war' -Force -ErrorAction SilentlyContinue; Remove-Item -Path 'E:\DevOps\Apache_Tomcat\webapps\java-servlet-web-1.0-SNAPSHOT' -Recurse -Force -ErrorAction SilentlyContinue; $warFile = Get-ChildItem -Path '.\artifacts\java-servlet-web-1.0-SNAPSHOT*.war' | Select-Object -First 1; if ($warFile) { Copy-Item -Path $warFile.FullName -Destination 'E:\DevOps\Apache_Tomcat\webapps' -Force } else { Write-Error 'WAR file not found in artifacts!'; exit 1 }"
-        shell: cmd
-
-      - name: Start Tomcat
-        run: |
-          PowerShell -ExecutionPolicy Bypass -Command "if (Test-Path 'E:\DevOps\Apache_Tomcat\bin\startup.bat') { & 'E:\DevOps\Apache_Tomcat\bin\startup.bat' } else { Write-Error 'startup.bat not found!'; exit 1 }; Start-Sleep -Seconds 60"
-        shell: cmd
-
-      - name: Verify Deployment
-        run: |
-          PowerShell -ExecutionPolicy Bypass -Command "Start-Sleep -Seconds 10; $res = Invoke-WebRequest -Uri 'http://localhost:8082/java-servlet-web-1.0-SNAPSHOT/' -UseBasicParsing -ErrorAction SilentlyContinue; if ($res.StatusCode -eq 200) { Write-Host 'Deployment successful!' } else { Write-Error ' Deployment failed or invalid response.'; exit 1 }"
-        shell: cmd
