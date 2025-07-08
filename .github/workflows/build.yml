@@ -1,12 +1,10 @@
-name: Java CI/CD with Maven - Build and Deploy WAR Tom cat
+name: Java CI with Maven - Build WAR on HelloServlet Change
 
 on:
   push:
-    branches-ignore: [main]
-    paths:
-      - "src/main/**"
-      - "src/test/**"
-
+    branches: [main, feature-hello]
+  pull_request:
+    branches: [main]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,10 +15,10 @@ jobs:
         with:
           java-version: "21"
           distribution: "temurin"
-      - name: Run Unit Tests with Maven
-        run: mvn clean test
+      - name: Verify with Maven
+        run: mvn clean verify # Kiểm tra mã
       - name: Build with Maven
-        run: mvn package
+        run: mvn package # Build WAR
       - name: Upload WAR artifact
         uses: actions/upload-artifact@v4
         with:
