@@ -1,4 +1,4 @@
-name: Java CI/CD with Maven - Build and Deploy WAR
+name: Java CI/CD with Maven - Build and Deploy WAR Tom cat
 
 on:
   push:
