@@ -3,8 +3,8 @@ package com;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
+import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import com.example.HelloServlet;
