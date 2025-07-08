@@ -3,8 +3,7 @@ name: Java CI with Maven - Build WAR on HelloServlet Change
 on:
   push:
     branches: [ feature-minhddan]
-  pull_request:
-    branches: [main]
+
 jobs:
   build:
     runs-on: ubuntu-latest
