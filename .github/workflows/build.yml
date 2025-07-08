@@ -2,7 +2,7 @@ name: Java CI with Maven - Build WAR on HelloServlet Change
 
 on:
   push:
-    branches: [main, feature-hello]
+    branches: [main, feature-minhddan]
   pull_request:
     branches: [main]
 jobs:
