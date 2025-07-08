@@ -2,7 +2,7 @@ package com;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import com.example.InfoServlet;
 import org.mockito.Mockito;
 import java.io.PrintWriter;

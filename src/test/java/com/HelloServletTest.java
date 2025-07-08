@@ -3,8 +3,8 @@ package com;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import com.example.HelloServlet;
@@ -35,11 +35,11 @@ public class HelloServletTest {
         // Check output content
         writer.flush();
         String output = stringWriter.toString();
-        assertTrue(output.contains("<h1>Hello, World, I am a servlet, chú ý nhánh của dangluong-17.06.2025!</h1>"),
+        assertTrue(output.contains("<h1>Hello, World, I am a servlet, chú ý nhánh của minh đàn</h1>"),
                 "Output does not contain expected heading");
         assertTrue(output.contains("<p>Alo alo</p>"),
                 "Output does not contain expected paragraph");
-        assertTrue(output.contains("<a href='http://localhost:8082/java-servlet-web-1.0-SNAPSHOT/'><button>Back to Index</button></a>"),
+        assertTrue(output.contains("<a href='http://localhost:8082/java-servlet-web-1.0-SNAPSHOT/'><button>Back to Home Ok</button></a>"),
                 "Output does not contain back button");
     }
 }
