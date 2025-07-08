@@ -18,6 +18,6 @@ public class HelloServlet extends HttpServlet {
 
         out.println("<h1>Hello, World, I am a servlet, chú ý nhánh của dangluong-17.06.2025!</h1>");
         out.println("<p>Alo alo</p>");
-        out.println("<a href='http://localhost:8082/java-servlet-web-1.0-SNAPSHOT/'><button>Back to Home</button></a>");
+        out.println("<a href='http://localhost:8082/java-servlet-web-1.0-SNAPSHOT/'><button>Back to Home Ok</button></a>");
     }
 }
