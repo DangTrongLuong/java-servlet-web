@@ -17,7 +17,7 @@ public class InfoServlet extends HttpServlet {
     
     static {
         
-        members.add("DaoQuyNam - MSSV: BIT2300");
+        members.add("DaoQuyNam - MSSV: BIT230074");
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
