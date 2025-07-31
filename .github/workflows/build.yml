@@ -2,7 +2,7 @@ name: Java CI with Maven - Build WAR on HelloServlet Change
 
 on:
   push:
-    branches: [feature-minhddan]
+    branches: [feature-ducanh]
 jobs:
   build:
     runs-on: ubuntu-latest
