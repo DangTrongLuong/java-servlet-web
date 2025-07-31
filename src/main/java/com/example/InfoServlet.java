@@ -16,8 +16,8 @@ public class InfoServlet extends HttpServlet {
     private static List<String> members = new ArrayList<>();
     
     static {
-        members.add("KhuatQuangDuc - MSSV: BIT230250");
-        members.add("NguyenVuDucAnh - MSSV: BIT230074");
+        
+        members.add("DaoQuyNam - MSSV: BIT23007");
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -1,13 +1,16 @@
 package com;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import org.junit.Test;
-import com.example.InfoServlet;
-import org.mockito.Mockito;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import com.example.InfoServlet;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class InfoServletTest {
 
@@ -34,9 +37,7 @@ public class InfoServletTest {
         String output = stringWriter.toString();
         assertTrue(output.contains("<h2>Thông tin nhóm:</h2>"),
                 "Output does not contain group info heading");
-        assertTrue(output.contains("<li>DangTrongLuong - MSSV: BIT230250</li>"),
-                "Output does not contain first member");
-        assertTrue(output.contains("<li>PhamMinhDan - MSSV: BIT230074</li>"),
+        assertTrue(output.contains("<li>DaoQuyNam - MSSV: BIT230074</li>"),
                 "Output does not contain second member");
         assertTrue(output.contains("<form method='post' action='/java-servlet-web-1.0-SNAPSHOT/info'>"),
                 "Output does not contain form");
